@@ -14,10 +14,16 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { signIn, signOut, useSession } from 'next-auth/react';
-
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
 const pages = ['Products', 'Pricing', 'Blog'];
+export interface HeaderProps {
+  mode: string;
+  setMode: () => void;
+}
 
-const Header=()=> {
+const Header=(props:HeaderProps)=> {
+console.log(props);
 
   const {data:session} = useSession();
   const userPofileimg = session?.user?.image;
@@ -62,7 +68,7 @@ const Header=()=> {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            DataSoft
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -118,7 +124,7 @@ const Header=()=> {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            DataSoft
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -132,11 +138,20 @@ const Header=()=> {
             ))}
           </Box>
 
+            <IconButton onClick={props.setMode} color="inherit">
+            <Typography textAlign="center" sx={{ display:{xs:'none',md:'block'} }}>
+
+
+            {props.mode} 
+            </Typography>
+            {props.mode === 'light' ? (
+                <Brightness7Icon />):(<Brightness4Icon />)}
+            </IconButton>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
               {userPofileimg && <Avatar alt="Remy Sharp" src={userPofileimg} />}
-              {!userPofileimg && <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />}
+              {!userPofileimg && <Avatar alt="Remy Sharp"  />}
    
               </IconButton>
             </Tooltip>

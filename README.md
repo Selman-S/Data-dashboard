@@ -7,7 +7,9 @@
  * Typescript
  * Material UI
  * Next-Auth
-
+ * SASS
+ * Storybook
+ * MUİ Theme
 
    <br>
 

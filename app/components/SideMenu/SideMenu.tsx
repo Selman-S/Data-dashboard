@@ -1,5 +1,7 @@
 import React from 'react'
-
+export interface SideMenuProps {
+    
+  }
 const SideMenu = () => {
   return (
     <ul>
